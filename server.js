@@ -11,10 +11,8 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use("/api", apiRoutes);
-app.use("/", htmlRoutes)
-
-
+app.use(apiRoutes);
+app.use(htmlRoutes)
 
 app.listen(PORT, () => {
     console.log(`Server available at localhost${PORT}`);

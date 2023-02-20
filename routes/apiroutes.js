@@ -1,5 +1,5 @@
-const fs = require('fs');
 const router = require('express').Router();
+const fs = require('fs');
 const {v4: uuidv4} = require('uuid');
 const path = require('path');
 
@@ -8,9 +8,9 @@ router.get('/api/notes', (req, res) => {
 });
 
 router.post('/api/notes', (req, res) => {
-    const db = fs.readFileSync('db/db.json');
+    let db = fs.readFileSync('db/db.json');
     db = JSON.parse(db);
-    const userNote = {
+    let userNote = {
         title: req.body.title,
         text: req.body.text,
         id: uuidv4(),
@@ -21,8 +21,8 @@ router.post('/api/notes', (req, res) => {
 });
 
 router.delete('/api/notes/:id', (req, res) => {
-    const db = JSON.parse(fs.readFileSync('db/db.json'))
-    const deleteNotes = db.filter(item => item.id !== req.params.id);
+    let db = JSON.parse(fs.readFileSync('db/db.json'))
+    let deleteNotes = db.filter(item => item.id !== req.params.id);
     fs.writeFileSync('db/db.json', JSON.stringify(deleteNotes));
     res.json(deleteNotes);
 });
