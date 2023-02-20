@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(apiRoutes);
-app.use(htmlRoutes)
+app.use(htmlRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server available at localhost${PORT}`);
